@@ -1,0 +1,103 @@
+<%- include("links/header"); -%>
+        <div class="row">
+            <%- include("links/navbar"); -%>
+            <div class="col-lg-9 pt-3" style="height:500px;">
+
+                <% if(msg!=''){ %>
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <strong><%= msg %></strong>.
+                    </div>
+                    <% } %>
+               <form action="/store_movie" method="post">
+
+                <div class="form-group">
+                    <label for="">Movie Name</label>
+                    <select class="form-control" name="details1" id="details1">
+                      <option value="Dhoom1">Dhoom1</option>
+                      <option value="Dhoom2">Dhoom2</option>
+                      <option value="Dhoom3">Dhoom3</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Theater Name</label>
+                    <select class="form-control" name="details2" id="details2" onchange="price_details('1');">
+                      <option value="Carnival">Carnival</option>
+                      <option value="Bioscope">Bioscope</option>
+                      <option value="DC">DC</option>
+                    </select>
+                  </div>
+
+                 <div class="form-group">
+                    <label for="">Number Of Ticket</label>
+                    <input type="number" value="1" min="1" onchange="price_details(this.value);"
+                      class="form-control" name="phone" value="" id="phone" aria-describedby="helpId" placeholder="">
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="">Amount</label>
+                    <input type="number" readonly
+                      class="form-control" name="amount" id="amount" aria-describedby="helpId" placeholder="">
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                  </div>
+                  
+                 
+        
+                  
+                <button type="submit" class="btn btn-primary">Recharge Movie</button>
+               </form>
+
+
+            </div>
+        </div>
+      </div>
+      <script>
+        function price_details(n)
+        {
+            var x=document.getElementById("details1").value;
+            var y=document.getElementById("details2").value;
+            var z;
+            if(x=="Dhoom1" && y=="Carnival")
+            {
+                z=50;
+            }
+            if(x=="Dhoom2" && y=="Carnival")
+            {
+                z=70;
+            }
+            if(x=="Dhoom3" && y=="Carnival")
+            {
+                z=90;
+            }
+            if(x=="Dhoom1" && y=="Bioscope")
+            {
+                z=40;
+            }
+            if(x=="Dhoom2" && y=="Bioscope")
+            {
+                z=75;
+            }
+            if(x=="Dhoom3" && y=="Bioscope")
+            {
+                z=92;
+            }
+            if(x=="Dhoom1" && y=="DC")
+            {
+                z=30;
+            }
+            if(x=="Dhoom2" && y=="DC")
+            {
+                z=45;
+            }
+            if(x=="Dhoom3" && y=="DC")
+            {
+                z=42;
+            }
+            var n1=z*n;
+            document.getElementById("amount").value=n1;
+        }
+      </script>
+      <%- include("links/footer"); -%>

@@ -1,0 +1,199 @@
+
+<style>
+    :root {
+        --primary-color: #2196F3;
+        --background-dark: #121212;
+        --background-light: #1E1E1E;
+        --text-primary: #FFFFFF;
+        --text-secondary: #B0B0B0;
+        --hover-color: #2c2929;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-dark);
+        color: var(--text-primary);
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    .sidebar {
+        width: 220px;
+        background-color: var(--background-light);
+        padding: 20px;
+        margin-right: 50px;
+        border-radius: 10px;
+        margin-left: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .sidebar h2 {
+        margin-top: 0;
+        color: var(--primary-color);
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .sidebar li {
+        padding: 12px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+    .sidebar li:hover, .sidebar li.active {
+        background-color: var(--primary-color);
+        color: var(--text-primary);
+    }
+
+    .main-content {
+        flex-grow: 1;
+        padding: 30px;
+        background-color: var(--background-dark);
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+        font-weight: 500;
+    }
+
+    .search-bar {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--background-light);
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .search-bar:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--primary-color);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 15px;
+        background-color: var(--background-light);
+    }
+
+    th {
+        background-color: var(--primary-color);
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+
+    tr {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    tr:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 6px rgba(7, 224, 177, 0.1).1;
+        color: #FFFFFF;
+    }
+
+    .amount-positive {
+        color: #4CAF50;
+    }
+
+    .amount-negative {
+        color: #F44336;
+    }
+
+    select {
+        padding: 8px 12px;
+        border-radius: 5px;
+        background-color: var(--background-light);
+        color: var(--text-primary);
+        border: 1px solid var(--primary-color);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+</style>
+
+<!-- <div class="col-lg-3 bg-info" style="height:500px;overflow:auto; margin-left: 0; margin-right: 0;">
+    
+    <ul class="list-group">
+       
+        <li class="list-group-item active">Money</li>
+        <li class="list-group-item"><a href="/add_money">Add Money</a></li>
+        <li class="list-group-item"><a href="/send_money">Send Money</a></li>
+        <li class="list-group-item"><a href="#">Wallet Balance(<%= wallet %>)</a></li>
+                
+    
+
+
+
+    <ul class="list-group">
+        <li class="list-group-item active">Recharge</li>
+        <li class="list-group-item"><a href="/mobile">Mobile Recharge</a></li>
+        <li class="list-group-item"><a href="/dth">DTH Recharge</a></li>
+        <li class="list-group-item"><a href="/electric">Electric bill</a></li>
+        <li class="list-group-item"><a href="/movie">Movie Ticket</a></li>
+    </ul>
+    
+
+    
+    <ul class="list-group">
+        <li class="list-group-item active">Transaction</li>
+        <li class="list-group-item"><a href="/">Transaction History</a></li>
+    </ul>
+
+   
+
+</div> -->
+
+<div class="sidebar fade-in">
+    <!-- <h2>Welcome <a class="navbar-brand" href="#"><%= name %></a></h2> -->
+     <h2>Current Balance</h2><br>
+     <h2 style="margin-left: 50px;"><big><b>$<%= wallet %></b></big></h2>
+     <br>
+    <ul>
+        <li class="active">Money</li>
+        <li><a href="/add_money">Add Money</a></li>
+        <li><a href="/send_money">Send Money</a></li>
+       
+        <li  class="active">Recharge</li>
+        <li><a href="/mobile">Mobile Recharge</a></li>
+        <li><a href="/dth">DTH Recharge</a></li>
+        <li><a href="/electric">Electric bill</a></li>
+        <li><a href="/movie">Movie Ticket</a></li>
+        <li  class="active">Transaction</li>
+        <li><a href="/">Transaction History</a></li>
+    </ul>
+</div>

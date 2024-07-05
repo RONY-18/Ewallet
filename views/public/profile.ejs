@@ -1,0 +1,76 @@
+<%- include("links/header"); -%>
+<style>
+
+   #myTable:hover{
+       color: blue;
+   }
+
+   tr:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(4, 235, 235, 0.5);
+            color: aqua;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--background-light);
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+    
+        .search-bar:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+</style>
+        <div class="row">
+            <%- include("links/navbar"); -%>
+            <div class="col-lg-9 pt-3" style="height:500px;">
+
+                <nav>
+               <form action="">
+                <input class="search-bar" style="background-color:rgba(29, 44, 43, 0.781)" id="myInput" type="text" placeholder="Search..">
+                
+                </form>
+               </nav>
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-primary" style="color: azure; border-radius: 10px;">
+                            <th>Phone</th>
+                            <th>Amount</th>
+                            <th>Details</th>
+                            <th>Wallet</th>
+                            <th>Transaction date</th>
+                        </tr>
+                    </thead>
+                    <tbody  style="color: azure;">
+
+                        <% for(var i = 0; i< data.length; i++) { %>
+                            <tr>
+                                <td style="color: aqua;" ><%= data[i].phone %></td>
+                                <td style="color: aqua;">
+                                    <% if(data[i].type=="CR"){ %>
+                                    <label class="text-success">+<%= data[i].amount %></label>
+                                    <% }else{ %>
+                                        <label class="text-danger">-<%= data[i].amount %></label>
+                                    <% } %>
+
+                                </td>
+                                <td style="color:rgb(8, 148, 241)"><%= data[i].details %></td>
+                                <td style="color :rgb(8, 148, 241)"><%= data[i].wallet %></td>
+                                <td style="color:rgb(8, 148, 241)"><%= data[i].created_at %></td>
+                            </tr>
+                         <% } %>
+                        
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+      </div>
+      <script>  document.querySelector('.search-bar').addEventListener('input', function(e) {             const searchTerm = e.target.value.toLowerCase();             const rows = document.querySelectorAll('#transactionBody tr');             rows.forEach(row => {                 const text = row.textContent.toLowerCase();                 row.style.display = text.includes(searchTerm) ? '' : 'none';             });         });       </script>
+      <%- include("links/footer"); -%>
